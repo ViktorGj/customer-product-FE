@@ -1,1 +1,13 @@
-<p>home works!</p>
+<div class="row home-container">
+    <div class="side-menu col-md-2 p-0">
+        <div class="list-group">
+            <a routerLink="/products" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+                true}" class="list-group-item list-group-item-action">Products</a>
+            <a routerLink="/customers" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+                true}" class="list-group-item list-group-item-action">Customers</a>
+        </div>
+    </div>
+    <div class="col-md-10">
+        <router-outlet></router-outlet>
+    </div>
+</div>
