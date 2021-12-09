@@ -1,9 +1,9 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
-import { filter } from 'rxjs/operators';
-import { AuthService } from '../../services/auth.service';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {FormControl, FormGroup} from '@angular/forms';
+import {Router} from '@angular/router';
+import {Observable, Subscription} from 'rxjs';
+import {filter} from 'rxjs/operators';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   authState$: Observable<boolean>;
 
   constructor(private authService: AuthService,
-    private router: Router) {
+              private router: Router) {
     this.authState$ = this.authService.getAuthState();
     this.authService.getAuthState().subscribe(s => console.log(s));
   }
@@ -46,6 +46,6 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.authState$.pipe(
         filter(value => value === true)
       ).subscribe(callback)
-    )
+    );
   }
 }
