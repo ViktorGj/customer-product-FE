@@ -18,9 +18,4 @@ export class ProductsComponent implements OnInit {
   ngOnInit(): void {
     this.products$ = this.productsService.getProducts();
   }
-
-  public switchView() {
-    this.listView = !this.listView;
-  }
-
 }
