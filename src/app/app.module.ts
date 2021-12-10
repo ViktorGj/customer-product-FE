@@ -5,8 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/components/login/login.component';
 import { SidePanelComponent } from './page/components/side-panel/side-panel.component';
-import { ListViewComponent } from './products/components/list-view/list-view.component';
-import { GridViewComponent } from './products/components/grid-view/grid-view.component';
 import { ProductsComponent } from './products/components/products/products.component';
 import { CreateProductComponent } from './products/components/create-product/create-product.component';
 import { SuggestionComponent } from './products/components/suggestion/suggestion.component';
@@ -19,8 +17,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AppComponent,
     LoginComponent,
     SidePanelComponent,
-    ListViewComponent,
-    GridViewComponent,
     ProductsComponent,
     CreateProductComponent,
     SuggestionComponent,
