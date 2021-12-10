@@ -1,15 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import {Component} from '@angular/core';
+import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-suggestion',
   templateUrl: './suggestion.component.html',
   styleUrls: ['./suggestion.component.scss']
 })
-export class SuggestionComponent implements OnInit {
+export class SuggestionComponent {
 
-  constructor() { }
+  constructor(private modal: NgbActiveModal) {
+  }
 
-  ngOnInit(): void {
+  dismiss(): void {
+    this.modal.close(false);
+  }
+
+  confirm(): void {
+    this.modal.close(true);
   }
 
 }

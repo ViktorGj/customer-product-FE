@@ -1,20 +1,51 @@
-import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { delay } from 'rxjs/operators';
-import { ProductModel } from '../models/product.model';
+import {Injectable, OnDestroy} from '@angular/core';
+import {BehaviorSubject, Observable, Subscription} from 'rxjs';
+import {delay, map} from 'rxjs/operators';
+import {ProductModel} from '../models/product.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductsService {
+export class ProductsService implements OnDestroy {
 
-  constructor() { }
+  private subscriptions = new Subscription();
+  public productsSubject: BehaviorSubject<ProductModel[]> = new BehaviorSubject<ProductModel[]>(mockProducts);
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
+  }
 
   public getProducts(): Observable<ProductModel[]> {
-    return of(mockProducts).pipe(
-      delay(1000)
-    )
-  };
+    return this.productsSubject.asObservable()
+      .pipe(
+        delay(1000)
+      );
+  }
+
+  public addProduct(product: ProductModel): void {
+    this.subscriptions.add(
+      this.productsSubject.pipe(
+        map((products: ProductModel[]) => {
+          return products.push(product);
+        })
+      ).subscribe()
+    );
+  }
+
+  public removeProduct(id: string): void {
+    this.subscriptions.add(
+      this.productsSubject.pipe(
+        map(products => {
+          const index = products.findIndex(x => x.id === id);
+          if (index !== -1) {
+            return products.splice(index, 1);
+          } else {
+            return products;
+          }
+        })
+      ).subscribe()
+    );
+  }
 }
 
 const mockProducts: ProductModel[] = [
@@ -43,4 +74,4 @@ const mockProducts: ProductModel[] = [
     name: 'bottle',
     price: 97
   }
-]
+];

@@ -1,13 +1,26 @@
 <div class="mt-5 pl-4 pr-4">
-    <form [formGroup]="form" (ngSubmit)="submit()">
-        <div class="mb-3">
-            <label for="name" class="form-label">Product Name</label>
-            <input type="text" formControlName="name" class="form-control" id="name">
-        </div>
-        <div class="mb-3">
-            <label for="price" class="form-label">Price</label>
-            <input type="number" formControlName="price" class="form-control" id="price">
-        </div>
-        <input type="submit" value="Create" class="btn btn-outline-primary float-right">
-    </form>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="mb-3">
+      <label for="name" class="form-label">Product Name</label>
+      <input type="text" formControlName="name" class="form-control" id="name"
+             [ngClass]="{'is-invalid': form.controls.name.invalid && (form.controls.name.dirty || form.controls.name.touched)}">
+      <div class="invalid-feedback"
+           *ngIf="form.controls.name.invalid && (form.controls.name.dirty || form.controls.name.touched)">
+        <span *ngIf="form.controls.name.errors?.required"></span>
+        Name is required.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="price" class="form-label">Price</label>
+      <input type="text" formControlName="price" class="form-control mb-2" id="price"
+             [ngClass]="{'is-invalid': form.controls.price.invalid && (form.controls.price.dirty || form.controls.price.touched)}">
+      <div class="invalid-feedback"
+           *ngIf="form.controls.price.invalid && (form.controls.price.dirty || form.controls.price.touched)">
+        <div *ngIf="form.controls.price.errors?.required">Price is required.</div>
+        <div *ngIf="form.controls.price.errors?.maxlength">Price has to be no longer than 2 digits.</div>
+        <div *ngIf="form.controls.price.errors?.pattern">Numbers only.</div>
+      </div>
+    </div>
+    <input type="submit" value="Create" class="btn btn-outline-primary float-right" [disabled]="form.invalid">
+  </form>
 </div>
