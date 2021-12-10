@@ -12,6 +12,7 @@ import { CreateProductComponent } from './products/components/create-product/cre
 import { SuggestionComponent } from './products/components/suggestion/suggestion.component';
 import { HomeComponent } from './page/components/home/home.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,1 +1,29 @@
-@import 'node_modules/bootstrap/scss/bootstrap';
+/* Importing fontawesome icons */
+// @import "./src/assets/fontawesome/scss/variables";
+@import "./src/assets/fontawesome/scss/fontawesome";
+@import "./src/assets/fontawesome/scss/icons";
+@import "./src/assets/fontawesome/scss/regular";
+@import "./src/assets/fontawesome/scss/solid";
+
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+
+// general styles
+i {
+    cursor: pointer;
+}
+
+a {
+    cursor: pointer;
+    color: black;
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+.icon-btn {
+    border: none;
+    background: none;
+}
