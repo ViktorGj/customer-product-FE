@@ -15,8 +15,6 @@ export class ProductsService {
       delay(1000)
     )
   };
-
-
 }
 
 const mockProducts: ProductModel[] = [

@@ -24,7 +24,6 @@ export class LoginComponent implements OnInit, OnDestroy {
   constructor(private authService: AuthService,
               private router: Router) {
     this.authState$ = this.authService.getAuthState();
-    this.authService.getAuthState().subscribe(s => console.log(s));
   }
 
   ngOnInit(): void {

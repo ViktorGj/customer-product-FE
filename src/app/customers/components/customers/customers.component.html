@@ -1,1 +1,10 @@
-<p>customers works!</p>
+<div class="mt-5 pl-4 pr-4">
+    <div *ngFor="let c of customers$ | async" class="row mb-3">
+        <div class="col-md-3">{{c.name}}</div>
+        <div class="col-md-3">{{c.email}}</div>
+        <div class="col-md-3">{{c.phoneNumber}}</div>
+        <div class="col-md-3">
+            <span *ngFor="let p of c.purchasedProducts">{{p.name&nbsp;}}</span>
+        </div>
+    </div>
+</div>

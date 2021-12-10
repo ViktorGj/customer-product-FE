@@ -31,5 +31,6 @@ export class AuthService {
 
   public logout(): void {
     localStorage.clear();
+    window.location.reload();
   }
 }
