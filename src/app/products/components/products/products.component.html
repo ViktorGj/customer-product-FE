@@ -1,41 +1,18 @@
 <div class="mb-3 icons-container">
-    <button (click)="listView = false" class="icon-btn mr-2" [ngClass]="{'active-view': !listView}"><i
-            class="fas fa-th"></i></button>
-    <button (click)="listView = true" class="icon-btn" [ngClass]="{'active-view': listView}"><i class="fas fa-list"></i></button>
-    <a routerLink="/products/create" class="add-icon">Add<i class="fas fa-plus ml-1"></i></a>
+  <button (click)="listView = false" class="icon-btn mr-2" [ngClass]="{'active-view': !listView}"><i
+    class="fas fa-th"></i></button>
+  <button (click)="listView = true" class="icon-btn" [ngClass]="{'active-view': listView}"><i class="fas fa-list"></i>
+  </button>
+  <a routerLink="/products/create" class="add-icon">Add<i class="fas fa-plus ml-1"></i></a>
 </div>
 
 <div class="pl-4 pr-4">
   <div *ngIf="products$ | async as products; else loading">
     <ng-container *ngIf="listView; else gridView">
-      <div class="list-container">
-        <div class="row mb-1" *ngFor="let p of products">
-          <div class="col-md-5">
-            <p>{{p.name}}</p>
-          </div>
-          <div class="col-md-3">
-            <p>{{p.price | number : '1.2-2'}}$</p>
-          </div>
-          <div class="col-auto">
-            <button (click)="openDeleteConfirmation(p.id)" class="btn btn-outline-danger btn-sm icon-btn"><i class="far fa-trash-alt"></i></button>
-          </div>
-        </div>
-      </div>
+      <app-products-list-view [products]="products"></app-products-list-view>
     </ng-container>
     <ng-template #gridView>
-      <div class="grid-view">
-        <div class="row">
-          <div class="col-md-3 p-2" *ngFor="let p of products">
-            <div class="card">
-              <div class="card-body">
-                <p>{{p.name}}</p>
-                <p>{{p.price | number : '1.2-2'}}$</p>
-                <button (click)="openDeleteConfirmation(p.id)" class="btn btn-outline-danger btn-sm">Delete</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <app-products-grid-view [products]="products"></app-products-grid-view>
     </ng-template>
   </div>
 

@@ -1,0 +1,13 @@
+<div class="list-container">
+  <div class="row mb-1" *ngFor="let p of products">
+    <div class="col-md-5">
+      <p>{{p.name}}</p>
+    </div>
+    <div class="col-md-3">
+      <p>{{p.price | number : '1.2-2'}}$</p>
+    </div>
+    <div class="col-auto">
+      <button (click)="openDeleteConfirmation(p.id)" class="btn btn-outline-danger btn-sm icon-btn"><i class="far fa-trash-alt"></i></button>
+    </div>
+  </div>
+</div>

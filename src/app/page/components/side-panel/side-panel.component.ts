@@ -17,11 +17,10 @@ export class SidePanelComponent implements OnInit {
   ngOnInit(): void {
     this.userName = this.authService.getUser().pipe(
       map((user: UserModel) => user.username)
-    )
+    );
   }
 
   public logout(): void {
     this.authService.logout();
   }
-
 }
